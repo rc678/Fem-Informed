@@ -3,7 +3,6 @@ var url;
 /*****GET REQUESTS FOR DIFFERENT ARTICLES *****/
 var edu = "http://api.nytimes.com/svc/search/v2/articlesearch.json?q=women%2C+education%2C+lack&api-key=4eb27fee97550b23662e1222ece13e6b%3A17%3A71194879";
 var work = "http://api.nytimes.com/svc/search/v2/articlesearch.json?q=women%2C+workplace%2C+pay%2C+discrimination&api-key=4eb27fee97550b23662e1222ece13e6b%3A17%3A71194879";
-
 var genocide = "http://api.nytimes.com/svc/search/v2/articlesearch.json?q=women%2C+genocide&api-key=4eb27fee97550b23662e1222ece13e6b%3A17%3A71194879";
 var reproduction = "http://api.nytimes.com/svc/search/v2/articlesearch.json?q=abortion%2C+women%2C+prolife&api-key=4eb27fee97550b23662e1222ece13e6b%3A17%3A71194879";
 var violence =  "http://api.nytimes.com/svc/search/v2/articlesearch.json?q=domestic+violence%2C+women%2C+abuse&api-key=4eb27fee97550b23662e1222ece13e6b%3A17%3A71194879";
@@ -25,20 +24,12 @@ var scienceArticles = new Array();
 var mediaArticles = new Array();
 var journalismArticles = new Array();
 
-        $("#temp").remove();
-        $("p").hide();
-        $("#temp").hide();
 
 /*calls GUI and parsing files once static pages are loaded*/
 $(document).ready(function(){
         parseJSON();
         popOut();
         ifClicked();
-        $("#temp").remove();
-        $("p").hide();
-        $("#temp").hide();
-         
-
 });
 
 /*makes box popOut when clicked*/
@@ -52,16 +43,14 @@ function popOut(){
         //$(this).css("max-height", 150);
         whichClicked();
         ifClicked();
-        $("#temp").remove();
-        $("p").hide();
-        $("#temp").hide();
     });
-}
+}/*end of popOut*/
 
-
+/*determines which box was clicked and appends article to box*/
 function whichClicked(){
     var i;
     
+    /*appends education articles*/
     $("#edu").click(function(){
         for(i=0; i<eduArticles.length;i++)
         {
@@ -69,6 +58,7 @@ function whichClicked(){
         }
     })
     
+    /*appends women in workforce articles */
     $("#work").click(function(){
         for(i=0; i<workArticles.length;i++)
         {
@@ -76,6 +66,7 @@ function whichClicked(){
         }
     })
     
+    /*appends genocide articles */
     $("#genocide").click(function(){
         for(i=0; i<genocideArticles.length;i++)
         {
@@ -83,6 +74,7 @@ function whichClicked(){
         }
     })
     
+    /*appends reproductive articles*/
     $("#reproductive").click(function(){
         for(i=0; i<reproductionArticles.length;i++)
         {
@@ -90,6 +82,7 @@ function whichClicked(){
         }
     })
     
+    /*appends violence articles*/
     $("#violence").click(function(){
         for(i=0; i<violenceArticles.length;i++)
         {
@@ -97,6 +90,7 @@ function whichClicked(){
         }
     })
     
+    /*appends politics articles*/
      $("#pol").click(function(){
         for(i=0; i<politicsArticles.length;i++)
         {
@@ -104,6 +98,7 @@ function whichClicked(){
         }
     })
     
+    /*appends science articles*/
      $("#sci").click(function(){
         for(i=0; i<scienceArticles.length;i++)
         {
@@ -111,6 +106,7 @@ function whichClicked(){
         }
     })
     
+    /*appends media articles */
     $("#media").click(function(){
         for(i=0; i<mediaArticles.length;i++)
         {
@@ -118,39 +114,23 @@ function whichClicked(){
         }
     })
     
+    /*appends journalism articles*/
      $("#journalism").click(function(){
         for(i=0; i<mediaArticles.length;i++)
         {
             $("#container #journalism").append('<p id="temp">' + journalismArticles[i] + '</p>');
         }
     })
-            $("#temp").remove();
-        $("p").hide();
-        $("#temp").hide();
-}
+}/*end of whichClicked*/
+
 /*checks to see if clicked outside of box*/
 function ifClicked() {
-        $("#temp").remove();
-        $("p").hide();
-        $("#temp").hide();
     $('h3').click(function() {
         $("#container div a").show();
         $("#container div a").css("width", 200);
         $("#container div a").css("height", 150);
-        $('#edu p').remove();
-        $('#work p').remove();
-        $('#genocide p').remove();
-        $('#reproductive p').remove();
-        $('#violence p').remove();
-        $('#pol p').remove();
-        $('#sci p').remove();
-        $('#media p').remove();
-        $('#journalism p').remove();
+        clearArticles();
     });
-        $("#temp").remove();
-        $("p").remove();
-        $("p").hide();
-        $("#temp").hide();
 }
 
 /*inserts information about feminist issues */
@@ -161,15 +141,11 @@ function insertEDU(){
 */
 
 /*parses the JSON data and inserts into proper div*/
-
 function parseJSON(){
-            $("#temp").remove();
-            $("p").remove();
-        $("p").hide();
-        $("#temp").hide();
     var j;
     var i;
 
+    /*goes through every topic and inserts articles into propper array*/
     for(i=0; i<topics.length; i++)
     {
         var request = new XMLHttpRequest();
@@ -177,6 +153,8 @@ function parseJSON(){
         request.send(null);
         var json = request.responseText;
         var arr = JSON.parse(json);
+        
+        /*gets three articles and places into the proper array*/
         for(j=0; j<4; j++){
             url = arr.response.docs[j].web_url;
             switch(i){
@@ -211,6 +189,19 @@ function parseJSON(){
         }/*end of inner for*/
     }/*end of outer for*/
 } /*end of parseJSON */
+
+/*clears articles from the from when the user clicks FemInformed*/
+function clearArticles() {
+        $('#edu p').remove();
+        $('#work p').remove();
+        $('#genocide p').remove();
+        $('#reproductive p').remove();
+        $('#violence p').remove();
+        $('#pol p').remove();
+        $('#sci p').remove();
+        $('#media p').remove();
+        $('#journalism p').remove();
+}
 
 
 
