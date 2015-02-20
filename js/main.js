@@ -29,7 +29,8 @@ var journalismArticles = new Array();
 $(document).ready(function(){
         parseJSON();
         popOut();
-        ifClicked();
+        
+        //ifClicked();
 });
 
 /*makes box popOut when clicked*/
@@ -155,38 +156,53 @@ function parseJSON(){
         var arr = JSON.parse(json);
         
         /*gets three articles and places into the proper array*/
-        for(j=0; j<4; j++){
-            url = arr.response.docs[j].web_url;
             switch(i){
                 case 0:
-                    eduArticles.push(url);
+                    eduArticles.push(arr.response.docs[0].web_url);
+                    eduArticles.push(arr.response.docs[1].web_url);
+                    eduArticles.push(arr.response.docs[2].web_url);
                     break;
                 case 1:
-                    workArticles.push(url);
+                    workArticles.push(arr.response.docs[0].web_url);
+                    workArticles.push(arr.response.docs[1].web_url);
+                    workArticles.push(arr.response.docs[2].web_url);
                     break;
                 case 2:
-                    genocideArticles.push(url);
+                    genocideArticles.push(arr.response.docs[0].web_url);
+                    genocideArticles.push(arr.response.docs[1].web_url);
+                    genocideArticles.push(arr.response.docs[2].web_url);
                     break;
                 case 3:
-                    reproductionArticles.push(url);
+                    reproductionArticles.push(arr.response.docs[0].web_url);
+                    reproductionArticles.push(arr.response.docs[1].web_url);
+                    reproductionArticles.push(arr.response.docs[2].web_url);
                     break;
                 case 4:
-                    violenceArticles.push(url);
+                    violenceArticles.push(arr.response.docs[0].web_url);
+                    violenceArticles.push(arr.response.docs[1].web_url);
+                    violenceArticles.push(arr.response.docs[2].web_url);
                     break;
                 case 5:
-                    politicsArticles.push(url);
+                    politicsArticles.push(arr.response.docs[0].web_url);
+                    politicsArticles.push(arr.response.docs[1].web_url);
+                    politicsArticles.push(arr.response.docs[2].web_url);
                     break;
                 case 6:
-                    scienceArticles.push(url);
+                    scienceArticles.push(arr.response.docs[0].web_url);
+                    scienceArticles.push(arr.response.docs[1].web_url);
+                    scienceArticles.push(arr.response.docs[2].web_url);
                     break;
                 case 7:
-                    mediaArticles.push(url);
+                    mediaArticles.push(arr.response.docs[0].web_url);
+                    mediaArticles.push(arr.response.docs[1].web_url);
+                    mediaArticles.push(arr.response.docs[2].web_url);
                     break;
                 case 8:
-                    journalismArticles.push(url);
+                    journalismArticles.push(arr.response.docs[0].web_url);
+                    journalismArticles.push(arr.response.docs[1].web_url);
+                    journalismArticles.push(arr.response.docs[2].web_url);
                     break;
             }/*end of switch*/
-        }/*end of inner for*/
     }/*end of outer for*/
 } /*end of parseJSON */
 
