@@ -30,7 +30,7 @@ $(document).ready(function(){
         parseJSON();
         popOut();
         
-        //ifClicked();
+        ifClicked();
 });
 
 /*makes box popOut when clicked*/
@@ -49,13 +49,13 @@ function popOut(){
 
 /*determines which box was clicked and appends article to box*/
 function whichClicked(){
+    clearArticles();
     var i;
-    
     /*appends education articles*/
     $("#edu").click(function(){
         for(i=0; i<eduArticles.length;i++)
         {
-            $("#container #edu").append('<p id="temp">' + eduArticles[i] + '</p>');
+            $("#container #edu").append('<p id="temp">' + '<a href ="' + eduArticles[i] + '"> TITLE </a>'  + '</p>');
         }
     })
     
@@ -63,7 +63,7 @@ function whichClicked(){
     $("#work").click(function(){
         for(i=0; i<workArticles.length;i++)
         {
-            $("#container #work").append('<p id="temp">' + workArticles[i] + '</p>');
+            $("#container #work").append('<p id="temp">' + '<a href="' + workArticles[i] + '"> TITLE </a>' + '</p>');
         }
     })
     
@@ -71,7 +71,7 @@ function whichClicked(){
     $("#genocide").click(function(){
         for(i=0; i<genocideArticles.length;i++)
         {
-            $("#container #genocide").append('<p id="temp">' + genocideArticles[i] + '</p>');
+            $("#container #genocide").append('<p id="temp">' + '<a href="' + genocideArticles[i] + '"> TITLE </a>' +'</p>');
         }
     })
     
@@ -79,7 +79,7 @@ function whichClicked(){
     $("#reproductive").click(function(){
         for(i=0; i<reproductionArticles.length;i++)
         {
-            $("#container #reproductive").append('<p id="temp">' + reproductionArticles[i] + '</p>');
+            $("#container #reproductive").append('<p id="temp">' + '<a href="' + reproductionArticles[i] + '"> TITLE </a>' + '</p>');
         }
     })
     
@@ -87,7 +87,7 @@ function whichClicked(){
     $("#violence").click(function(){
         for(i=0; i<violenceArticles.length;i++)
         {
-            $("#container #violence").append('<p id="temp">' + violenceArticles[i] + '</p>');
+            $("#container #violence").append('<p id="temp">' + '<a href="' + violenceArticles[i] + '"> TITLE </a>' + '</p>');
         }
     })
     
@@ -95,7 +95,7 @@ function whichClicked(){
      $("#pol").click(function(){
         for(i=0; i<politicsArticles.length;i++)
         {
-            $("#container #pol").append('<p id="temp">' + politicsArticles[i] + '</p>');
+            $("#container #pol").append('<p id="temp">' + '<a href="' + politicsArticles[i] + '"> TITLE </a>' + '</p>');
         }
     })
     
@@ -103,7 +103,7 @@ function whichClicked(){
      $("#sci").click(function(){
         for(i=0; i<scienceArticles.length;i++)
         {
-            $("#container #sci").append('<p id="temp">' + scienceArticles[i] + '</p>');
+            $("#container #sci").append('<p id="temp">' + '<a href="' + scienceArticles[i] + '"> TITLE </a>' + '</p>');
         }
     })
     
@@ -111,7 +111,7 @@ function whichClicked(){
     $("#media").click(function(){
         for(i=0; i<mediaArticles.length;i++)
         {
-            $("#container #media").append('<p id="temp">' + mediaArticles[i] + '</p>');
+            $("#container #media").append('<p id="temp">' + '<a href="' + mediaArticles[i] + '"> TITLE </a>' + '</p>');
         }
     })
     
@@ -119,7 +119,7 @@ function whichClicked(){
      $("#journalism").click(function(){
         for(i=0; i<mediaArticles.length;i++)
         {
-            $("#container #journalism").append('<p id="temp">' + journalismArticles[i] + '</p>');
+            $("#container #journalism").append('<p id="temp">' + '<a href="' + mediaArticles[i] + '"> TITLE </a>' + '</p>');
         }
     })
 }/*end of whichClicked*/
@@ -134,27 +134,16 @@ function ifClicked() {
     });
 }
 
-/*inserts information about feminist issues */
-/*
-function insertEDU(){
-    $('#edu').append("<p>Women do not have the same access to education in many parts of the        world.</p>");
-}
-*/
-
 /*parses the JSON data and inserts into proper div*/
 function parseJSON(){
-    var j;
-    var i;
-
     /*goes through every topic and inserts articles into propper array*/
-    for(i=0; i<topics.length; i++)
+    for(var i=0; i<topics.length; i++)
     {
         var request = new XMLHttpRequest();
         var response = request.open( "GET", topics[i], false );
         request.send(null);
         var json = request.responseText;
         var arr = JSON.parse(json);
-        
         /*gets three articles and places into the proper array*/
             switch(i){
                 case 0:
