@@ -1,45 +1,21 @@
-/****moving grid****/
-h3{
-    font-size: 40px;
-    margin-left: 39%;
-    font-weight: bold;
-}
-
-#container{
-    margin-left: 25%;
-}
-
-#container div a{
+/*gets box size*/
+div div {
     width: 200px;
-    height: 150px;
+    height: 200px;
+    outline: 1px solid;
+    float: left;
 }
 
-/**** ROW1 Custom colors ****/
-/*#row1 .btn-default{
-    background-color: rgb(176, 30, 0);
-    border-color: rgb(176, 30, 0);
-}
-*/
-
-/**** ROW3 Custom colors ****/
-/*#row3 .btn-danger{
-    background-color: rgb(145, 209, 0);
-    border-color: rgb(145, 209, 0);
+/*centering grid*/
+div{
+        padding-left: 0;
+        padding-right: 0;
+        margin-left: auto;
+        margin-right: auto;
+        display: block;
+        width: 600px;
 }
 
-#row3 .btn-info{
-    background-color: rgb(243, 178, 0);
-    border-color: rgb(243, 178, 0);
+div div p{
+       margin: 90px;
 }
-
-#row3 .btn-info{
-    background-color: rgb(243, 178, 0);
-    border-color: rgb(243, 178, 0);
-}
-
-#row3 .btn-default{
-    background-color: rgb(0,216, 204);
-    border-color: rgb(0,216, 204);
-}
-*/
-
