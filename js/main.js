@@ -27,17 +27,61 @@ var journalismArticles = new Array();
 
 /*calls GUI and parsing files once static pages are loaded*/
 $(document).ready(function(){
-    hover();
+    onBox();
+    offBox();
+    onBoxClick();
 });
 
-function hover(){
-    $("p").hover( function() {
-        $(this).css('text-shadow', '0 0 0.2em #F87, 0 0 0.2em #F87');
+/*changes CSS when user hovers over a category in the box on the webpage*/
+function onBox(){
+    $("p").mouseenter( function() {
+        $(this).css('padding', '15%'); 
+        $(this).css('font-size', '20px');
+        $(this).css('text-shadow', '5px 5px 10px #F87, 5px 5px 10px #F87');
+        $(this).css('text-align', 'center');
     });
 }
 
-function onClick(){
+/*CSS changes when user hovers off the category in the box on the webpage*/
+function offBox(){
+    $("p").mouseleave( function() { 
+        $(this).css('padding', '30%');
+        $(this).css('font-size', '15px');
+        $(this).css('text-shadow', "");
+        $(this).css('text-align', 'center');
+    });
+}
+
+/*display information when the user clicks a category*/
+function onBoxClick(){
+    $("div div").click(function() {
+         $("div").remove();
+         $("body").append("<div> </div>");
+         $("div").css(
+          {
+             "outline": "1px solid",
+             "padding-left" : "0",
+             "padding-right": "0",
+             "margin-left": "auto",
+             "margin-right": "auto",
+             "display": "block",
+             "width": "600px",
+             "height": "600px"             
+          });
+         /*
+         $("div").css("margin-left", "auto");
+         $("div").css("margin-right", "auto");
+         $("div").css("display", "block");
+         $("div").css("width", "600px");
+        */
+         
+    });
     
+/*builds the base home screen after clicking*/
+function buildHomeScreen() {
+    
+}
+
 }
 
 

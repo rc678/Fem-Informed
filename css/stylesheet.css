@@ -16,6 +16,9 @@ div{
         width: 600px;
 }
 
+/*words inside of box*/
 div div p{
-       margin: 90px;
+       font-size: 15px;
+       padding: 30%;
+       text-align: center;
 }
