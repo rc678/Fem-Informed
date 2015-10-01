@@ -1,4 +1,5 @@
 var url;
+var box = new Object();
 
 /*****GET REQUESTS FOR DIFFERENT ARTICLES *****/
 var edu = "http://api.nytimes.com/svc/search/v2/articlesearch.json?q=women%2C+education%2C+lack&api-key=4eb27fee97550b23662e1222ece13e6b%3A17%3A71194879";
@@ -30,6 +31,7 @@ $(document).ready(function(){
     onBox();
     offBox();
     onBoxClick();
+    offBoxClick()
 });
 
 /*changes CSS when user hovers over a category in the box on the webpage*/
@@ -55,9 +57,10 @@ function offBox(){
 /*display information when the user clicks a category*/
 function onBoxClick(){
     $("div div").click(function() {
-         $("div").remove();
-         $("body").append("<div> </div>");
-         $("div").css(
+         $("#grid").hide("slow");
+         $("body").append("<div id='e2'> </div>");
+         $('#e2').append('<h3> EDUCATION </h3>');
+         $("#e2").css(
           {
              "outline": "1px solid",
              "padding-left" : "0",
@@ -66,22 +69,18 @@ function onBoxClick(){
              "margin-right": "auto",
              "display": "block",
              "width": "600px",
-             "height": "600px"             
+             "height": "600px",
+             "z-index": "10"  
           });
-         /*
-         $("div").css("margin-left", "auto");
-         $("div").css("margin-right", "auto");
-         $("div").css("display", "block");
-         $("div").css("width", "600px");
-        */
-         
     });
-    
-/*builds the base home screen after clicking*/
-function buildHomeScreen() {
-    
 }
 
+/*gets the main screen when the home page is not clicked*/
+function offBoxClick(){
+    $("h3").click(function (){
+        $("#e2").remove("slow");
+        $("#grid").show("slow"); 
+    });
 }
 
 
