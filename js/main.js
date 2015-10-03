@@ -13,8 +13,6 @@ var science = "http://api.nytimes.com/svc/search/v2/articlesearch.json?q=women%2
 var media = "http://api.nytimes.com/svc/search/v2/articlesearch.json?q=women%2C+media+%2C+cyber%2C+attack&api-key=4eb27fee97550b23662e1222ece13e6b%3A17%3A71194879"
 var journalism = "http://api.nytimes.com/svc/search/v2/articlesearch.json?q=gamergate&api-key=4eb27fee97550b23662e1222ece13e6b%3A17%3A71194879";
 
-var topics = [edu, work, genocide, reproduction, violence, politics, science, media, journalism];
-
 /***STORES ARTICLES BASED ON SUBJECT ***/
 var eduArticles = new Array();
 var workArticles = new Array();
@@ -56,9 +54,9 @@ function offBox(){
 
 /*display information when the user clicks a category*/
 function onBoxClick(){
-    $('#grid div').on('click', function() {
-         $('#grid').hide("slow"); //hide the grid
-         $("body").append('<div id="e2"> </div>').css(
+    $('#grid div').on('click', function() { //selecting any box in the grid
+         $('#grid').hide("slow"); //hide the grid and display block that was clicked
+         $("body").append('<div id="info-box"> </div>').css( //styling to allow block to take up screen
           {
              "outline": "1px solid",
              "padding-left" : "0",
@@ -70,18 +68,64 @@ function onBoxClick(){
              "height": "600px",
              "z-index": "10"  
           });
-          if(initial === true)
+          
+
+          
+          if(initial === true) //create home button if once clicked
           {
               $("div").append
               ('<h3 id="home"> HOME </h3>');
               initial = false; 
+              
+             $('h2').css({
+             "color": "red",
+             "margin-left": "auto",
+             "margin-right": "auto",
+             "display": "block",
+             "width": "100px"
+         });
           }
-          if(initial === false)
+
+          if(initial === false) //show h3 (home button) if something was clicked previously
           {
               $('h3').show();
           }
           
+         $('#info-box').append('<h2>' + this.id + '</h2>');
           
+          /*
+          switch(this.id) {
+              case 'education':
+                //add title of grid
+                //add relevent articles
+
+                break;
+              case 'workplace':
+                break;
+              case 'genocide':
+                break;
+              case 'reproductive-rights':
+                break;
+              case 'violence':
+                break;
+              case 'politics':
+                break;
+              case 'science':
+                break;
+              case 'media':
+                break;
+              case 'journalism':
+                break;
+          }*/
+          
+          $('h2').css({
+             "color": "red",
+             "margin-left": "auto",
+             "margin-right": "auto",
+             "display": "block",
+             "width": "180px",
+             "text-align": "center"
+         });
           offBoxClick()    
     }); 
 }
@@ -91,17 +135,6 @@ function offBoxClick(){
     $("h3").click(function() { //select a box
         $('#grid').show("slow");
         $('h3').hide();
+        $('h2').remove();
     });
 }
-
-
-
-
-
-
-
-
-
-
-
-
