@@ -3,15 +3,15 @@ var box = new Object();
 var initial = true;
 
 /*****GET REQUESTS FOR DIFFERENT ARTICLES *****/
-var edu = "http://api.nytimes.com/svc/search/v2/articlesearch.json?q=women%2C+education%2C+lack&api-key=4eb27fee97550b23662e1222ece13e6b%3A17%3A71194879";
-var work = "http://api.nytimes.com/svc/search/v2/articlesearch.json?q=women%2C+workplace%2C+pay%2C+discrimination&api-key=4eb27fee97550b23662e1222ece13e6b%3A17%3A71194879";
-var genocide = "http://api.nytimes.com/svc/search/v2/articlesearch.json?q=women%2C+genocide&api-key=4eb27fee97550b23662e1222ece13e6b%3A17%3A71194879";
-var reproduction = "http://api.nytimes.com/svc/search/v2/articlesearch.json?q=abortion%2C+women%2C+prolife&api-key=4eb27fee97550b23662e1222ece13e6b%3A17%3A71194879";
-var violence =  "http://api.nytimes.com/svc/search/v2/articlesearch.json?q=domestic+violence%2C+women%2C+abuse&api-key=4eb27fee97550b23662e1222ece13e6b%3A17%3A71194879";
-var politics = "http://api.nytimes.com/svc/search/v2/articlesearch.json?q=women%2C+politics&api-key=4eb27fee97550b23662e1222ece13e6b%3A17%3A71194879";
-var science = "http://api.nytimes.com/svc/search/v2/articlesearch.json?q=women%2C+technology%2C+lack&api-key=4eb27fee97550b23662e1222ece13e6b%3A17%3A71194879"
-var media = "http://api.nytimes.com/svc/search/v2/articlesearch.json?q=women%2C+media+%2C+cyber%2C+attack&api-key=4eb27fee97550b23662e1222ece13e6b%3A17%3A71194879"
-var journalism = "http://api.nytimes.com/svc/search/v2/articlesearch.json?q=gamergate&api-key=4eb27fee97550b23662e1222ece13e6b%3A17%3A71194879";
+var education = "http://api.nytimes.com/svc/search/v2/articlesearch.json?q=women+and+education&api-key=4eb27fee97550b23662e1222ece13e6b%3A17%3A71194879";
+var work = "http://api.nytimes.com/svc/search/v2/articlesearch.json?q=women+workplace&api-key=4eb27fee97550b23662e1222ece13e6b%3A17%3A71194879";
+var genocide = "http://api.nytimes.com/svc/search/v2/articlesearch.json?q=women+genocide&api-key=4eb27fee97550b23662e1222ece13e6b%3A17%3A71194879";
+var reproduction = "http://api.nytimes.com/svc/search/v2/articlesearch.json?q=abortion&api-key=4eb27fee97550b23662e1222ece13e6b%3A17%3A71194879";
+var violence =  "http://api.nytimes.com/svc/search/v2/articlesearch.json?q=domestic+violence+us&api-key=4eb27fee97550b23662e1222ece13e6b%3A17%3A71194879";
+var politics = "http://api.nytimes.com/svc/search/v2/articlesearch.json?q=women+in+government&api-key=4eb27fee97550b23662e1222ece13e6b%3A17%3A71194879";
+var science = "http://api.nytimes.com/svc/search/v2/articlesearch.json?q=women+in+STEM&api-key=4eb27fee97550b23662e1222ece13e6b%3A17%3A71194879"
+var media = "http://api.nytimes.com/svc/search/v2/articlesearch.json?q=women+media+discrimination&api-key=4eb27fee97550b23662e1222ece13e6b%3A17%3A71194879"
+var journalism = "http://api.nytimes.com/svc/search/v2/articlesearch.json?q=women+journalism+discrimination&api-key=4eb27fee97550b23662e1222ece13e6b%3A17%3A71194879";
 
 /***STORES ARTICLES BASED ON SUBJECT ***/
 var eduArticles = new Array();
@@ -26,14 +26,17 @@ var journalismArticles = new Array();
 
 
 /*calls GUI and parsing files once static pages are loaded*/
-$(document).ready(function(){
+$(document).ready(function()
+{
     onBox();
     offBox();
     onBoxClick();
+    parseJSON();
 });
 
 /*changes CSS when user hovers over a category in the box on the webpage*/
-function onBox(){
+function onBox()
+{
     $("p").mouseenter( function() {
         $(this).css('padding', '15%'); 
         $(this).css('font-size', '20px');
@@ -43,7 +46,8 @@ function onBox(){
 }
 
 /*CSS changes when user hovers off the category in the box on the webpage*/
-function offBox(){
+function offBox()
+{
     $("p").mouseleave( function() { 
         $(this).css('padding', '30%');
         $(this).css('font-size', '15px');
@@ -53,7 +57,8 @@ function offBox(){
 }
 
 /*display information when the user clicks a category*/
-function onBoxClick(){
+function onBoxClick()
+{
     $('#grid div').on('click', function() { //selecting any box in the grid
          $('#grid').hide("slow"); //hide the grid and display block that was clicked
          $("body").append('<div id="info-box"> </div>').css( //styling to allow block to take up screen
@@ -68,9 +73,7 @@ function onBoxClick(){
              "height": "600px",
              "z-index": "10"  
           });
-          
-
-          
+                    
           if(initial === true) //create home button if once clicked
           {
               $("div").append
@@ -83,7 +86,7 @@ function onBoxClick(){
              "margin-right": "auto",
              "display": "block",
              "width": "100px"
-         });
+             });
           }
 
           if(initial === false) //show h3 (home button) if something was clicked previously
@@ -92,32 +95,7 @@ function onBoxClick(){
           }
           
          $('#info-box').append('<h2>' + this.id + '</h2>');
-          
-          /*
-          switch(this.id) {
-              case 'education':
-                //add title of grid
-                //add relevent articles
-
-                break;
-              case 'workplace':
-                break;
-              case 'genocide':
-                break;
-              case 'reproductive-rights':
-                break;
-              case 'violence':
-                break;
-              case 'politics':
-                break;
-              case 'science':
-                break;
-              case 'media':
-                break;
-              case 'journalism':
-                break;
-          }*/
-          
+                    
           $('h2').css({
              "color": "red",
              "margin-left": "auto",
@@ -126,15 +104,35 @@ function onBoxClick(){
              "width": "180px",
              "text-align": "center"
          });
-          offBoxClick()    
+         offBoxClick()    
     }); 
 }
 
 /*gets the main screen when the home page is not clicked*/
-function offBoxClick(){
+function offBoxClick()
+{
     $("h3").click(function() { //select a box
         $('#grid').show("slow");
         $('h3').hide();
         $('h2').remove();
     });
+}
+
+/*parses a JSON file based on the box that was clicked */
+function parseJSON()
+{
+    var request = new XMLHttpRequest();
+    
+    request.open("GET", "http://api.nytimes.com/svc/search/v2/articlesearch.json?q=women+in+science+discrimination&api-key=4eb27fee97550b23662e1222ece13e6b%3A17%3A71194879", false);
+    request.send();
+    var result = request.responseText; 
+    var json = JSON.parse(result);
+    var title =  json.response.docs[0].snippet;
+    console.log(title);
+}
+
+/*displays the articles that relate to the box that was clicked*/
+function displayArticleTitles()
+{
+    
 }
