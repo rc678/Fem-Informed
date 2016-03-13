@@ -4,42 +4,35 @@
         <title> FemInformed </title>
         <meta charset="utf-8">        
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" type="text/css" href="css/stylesheet.css">
-        <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/stylesheet.css" rel="stylesheet">
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
         <script src="js/main.js"></script>
-
+        <link href="css/jquery-ui.min.css" rel="stylesheet">
+        <script src="jquery-ui.min.js"></script>
     </head>
     
     <body>
-        <div id="grid">
-            <div id="EDUCATION">
-                <p>EDUCATION</p>
-            </div>
-            <div id="WORKPLACE">
-                <p>WORKPLACE</p>
-            </div>
-            <div id="GENOCIDE">
-                <p>GENOCIDE</p>
-            </div>
-            <div id="REPRODUCTIVE RIGHTS">
-                <p>REPRODUCTIVE RIGHTS</p>
-            </div>
-            <div id="VIOLENCE">
-                <p>DOMESTIC VIOLENCE</p>
-            </div>
-            <div id="POLITICS">
-                <p>POLITICS</p>
-            </div>
-            <div id="SCIENCE">
-                <p>SCIENCE</p>
-            </div>
-            <div id="MEDIA">
-                <p>MEDIA</p>
-            </div>
-            <div id="JOURNALISM">
-                <p>JOURNALISM</p>
+        <h3>FemInformed</h3>
+        <div id="container">
+            <div id="row1">
+                <a class="btn btn-primary" id="edu" >Education</a>
+                <a class="btn btn-success" id="work" >Workplace</a>
+                <a class="btn btn-default" id="genocide" >Genocide</a>
             </div>
             
-        </div>
+            <div id="row2">
+                <a class="btn btn-warning" id="reproductive">Reproductive Rights</a>
+                <a class="btn btn-danger" id="violence">Domestic Violence</a>
+                <a class="btn btn-info" id="pol">Politics</a>
+            </div>
+            
+            <div id="row3">
+                <a class="btn btn-danger" id="sci" >Science</a>
+                <a class="btn btn-info" id="media">Media Representation</a>
+                <a class="btn btn-warning" id="journalism">Journalism</a>
+            </div>
+            
+        </div> <!-- End of outter div -->
     </body>
 </html>
